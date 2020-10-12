@@ -1,0 +1,20 @@
+<ul class="nav bg-dark">
+  <li class="nav-item">
+    <p class="nav-link h5 text-white mt-2 mb-2"><strong>Videos</strong></p>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-info mt-2" routerLinkActive="nav-link--active" routerLink="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-info mt-2" href="#">About us</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-info mt-2" href="#">FAQ</a>
+  </li>
+  <li
+    *ngIf="!router.url.includes('home/add-video') && !router.url.includes('home/edit-video')"
+    class="nav-item ml-auto mt-2 mr-5 mb-2"
+  >
+    <a routerLink="/home/add-video" class="btn btn-success">Add video</a>
+  </li>
+</ul>

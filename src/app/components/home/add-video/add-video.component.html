@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 class="my-5">
+    {{ title }}<span *ngIf="editVideo">: {{ editVideo.name }}</span>
+  </h1>
+  <form [formGroup]="addVideoForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <label for="videoNameFormControl" class="mb-0 mt-2">Video name</label>
+      </div>
+      <div class="col-md-10">
+        <input
+          type="text"
+          class="form-control"
+          id="videoNameFormControl"
+          placeholder="Video name"
+          formControlName="videoName"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <label for="videoAuthorIdFormControl" class="mb-0 mt-2">Video author</label>
+      </div>
+      <div class="col-md-10">
+        <select formControlName="videoAuthor" class="custom-select" id="videoAuthorFormControl">
+          <option *ngFor="let author of authors" [ngValue]="author">
+            {{ author.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <label for="videoCategoryFormControl" class="mb-0 mt-2">Video category</label>
+      </div>
+      <div class="col-md-10">
+        <select multiple formControlName="videoCategories" class="custom-select" id="videoCategoryFormControl">
+          <option *ngFor="let category of categories$ | async" [ngValue]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-2">
+        <button class="btn btn-primary mr-2" type="submit" [disabled]="addVideoForm.status === 'INVALID'">
+          Submit
+        </button>
+        <button (click)="onCancel()" class="btn btn-light" type="button">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

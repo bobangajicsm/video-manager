@@ -1,0 +1,46 @@
+<div class="container">
+  <h1 class="my-5">VManager Demo v0.0.1</h1>
+  <form>
+    <div class="form-group form-inline">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search video"
+          aria-label="Search video"
+          [formControl]="filter"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">Search</span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="card">
+    <table class="table table-striped mb-0">
+      <thead>
+        <tr>
+          <th scope="col">Video name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Category name</th>
+          <th scope="col">Highest quality format</th>
+          <th scope="col">Release Date</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let video of videos$ | async">
+          <td>{{ video.name }}</td>
+          <td>{{ video.author }}</td>
+          <td>{{ video.categories }}</td>
+          <td>{{ video.highestQualityFormat }}</td>
+          <td>{{ video.releaseDate }}</td>
+          <td>
+            <button class="btn btn-info mr-1" (click)="onVideoEdit(video.id)">Edit</button>
+            <button class="btn btn-danger" (click)="onVideoDelete(video)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

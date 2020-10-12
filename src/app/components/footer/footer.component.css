@@ -1,0 +1,8 @@
+.card-footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+  background-color: #F7F7F7;
+}
